@@ -50,11 +50,7 @@ def computeRmse(model, data, n):
     return sqrt(predictionsAndRatings.map(lambda x: (x[0] - x[1]) ** 2).reduce(add) / float(n))
 
 if __name__ == "__main__":
-    #if (len(sys.argv) != 3):
-       # print "Usage: /path/to/spark/bin/spark-submit --driver-memory 2g " + \
-         # "MovieLensALS.py /FileStore/tables/movieLensDir_1M /FileStore/tables/ratings.dat"
-       # sys.exit(1)
-
+   
     # set up environment
     file = open("/dbfs/FileStore/tables/MovieLensDir_10M/recommendations_10M.txt", "w") 
     
