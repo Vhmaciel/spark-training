@@ -146,15 +146,12 @@ if __name__ == "__main__":
     candidates = sc.parallelize([m for m in movies if m not in myRatedMovieIds])
     predictions = bestModel.predictAll(candidates.map(lambda x: (0, x))).collect()
     recommendations = sorted(predictions, key=lambda x: x[2], reverse=True)[:50]
-
-    file.write("Hello" + str(len(predictions)) + ' ' + str(len(recommendations)) + '\n')
-    
+   
     print ("Movies recommended for you:")
     for i in range(len(recommendations)):
         file.write("1")
         file.write("%2d: %s" % (i + 1, movies[recommendations[i][1]]))
 
-    file.write("thats all")
                    
     # clean up
     sc.stop()
